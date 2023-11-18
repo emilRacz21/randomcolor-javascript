@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <input type="text" style="width: 50px" id="" />
+    <script>
+      let a, number, c, input;
+
+      function color() {
+        document.body.style.fontFamily = "cursive";
+        a =
+          "#" + Math.floor(Math.random() * (256 * 256 * 256) - 1).toString(16);
+        let c = (document.body.style.backgroundColor = a);
+        goNext(a);
+      }
+
+      function goNext(a) {
+        document.body.style.position = "absolute";
+        document.body.style.top = "40%";
+        document.body.style.left = "50%";
+        document.body.style.transform = "translate(-50%)";
+
+        c = document.createElement("button");
+        document.body.append(c);
+
+        document.getElementsByTagName("button")[0].value = a;
+        document.getElementsByTagName("button")[0].innerHTML =
+          "Kliknij aby skopiowac kolor!";
+        document
+          .getElementsByTagName("button")[0]
+          .setAttribute("onclick", "goHere()");
+        document.getElementsByTagName("button")[0].setAttribute("href", "#");
+        number = document.createElement("div");
+        number.innerHTML = a;
+        document.body.append(number);
+        let c1 =
+          "#" +
+          Math.floor(Math.random() * (256 * 256 * 256) - 110).toString(16);
+        console.log(a);
+        number.style.color = c1;
+        number.style.fontSize = "100px";
+        number.style.textShadow = "2px 2px 2px black";
+      }
+
+      function goHere() {
+        input = document.getElementsByTagName("input")[0];
+        input.value = a;
+        input.select();
+        document.execCommand("copy");
+        let div2 = document.getElementById("div");
+        div2.style.fontSize = "20px";
+        div2.innerHTML = "skopiowano!";
+      }
+
+      document.body.addEventListener("keyup", function (e) {
+        if ((e.key = " ")) {
+          window.location.reload();
+        }
+      });
+      color();
+    </script>
+    <div style="text-align: center" id="div"></div>
+  </body>
+</html>
